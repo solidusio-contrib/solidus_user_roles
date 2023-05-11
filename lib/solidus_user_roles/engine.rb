@@ -21,13 +21,7 @@ module SolidusUserRoles
       # Ensure both tables exist before assigning permissions
       if (ActiveRecord::Base.connection.tables & ['spree_roles', 'spree_permission_sets']).to_a.length == 2
         ::Spree::Role.non_base_roles.each do |role|
-          if ::Spree.solidus_gem_version < Gem::Version.new('2.5.x')
-            ::Spree::RoleConfiguration.configure do |config|
-              config.assign_permissions role.name, role.permission_sets_constantized
-            end
-          else
-            ::Spree::Config.roles.assign_permissions role.name, role.permission_sets_constantized
-          end
+          ::Spree::Config.roles.assign_permissions role.name, role.permission_sets_constantized
         end
       end
     rescue ActiveRecord::NoDatabaseError

@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri'] = 'https://github.com/solidusio-contrib/solidus_user_roles'
   spec.metadata['changelog_uri'] = 'https://github.com/solidusio-contrib/solidus_user_roles/blob/master/CHANGELOG.md'
 
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.5', '< 4')
+  spec.required_ruby_version = Gem::Requirement.new('>= 3', '< 4') # rubocop:disable Gemspec/RequiredRubyVersion
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.executables = files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'solidus_core', ['>= 2.0.0', '< 5']
+  spec.add_dependency 'solidus_core', ['>= 3', '< 5']
   spec.add_dependency 'solidus_support', '~> 0.5'
 
   spec.add_development_dependency 'shoulda-matchers'
