@@ -17,13 +17,7 @@ module SolidusUserRoles
       end
 
       def assign_permissions
-        if ::Spree.solidus_gem_version < Gem::Version.new('2.5.x')
-          ::Spree::RoleConfiguration.configure do |config|
-            config.assign_permissions name, permission_sets_constantized
-          end
-        else
-          ::Spree::Config.roles.assign_permissions name, permission_sets_constantized
-        end
+        ::Spree::Config.roles.assign_permissions name, permission_sets_constantized
       end
 
       ::Spree::Role.prepend self
