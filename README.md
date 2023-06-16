@@ -10,7 +10,7 @@
 Add solidus_user_roles to your Gemfile:
 
 ```ruby
-gem 'solidus_user_roles', github: 'solidusio-contrb/solidus_user_roles'
+gem 'solidus_user_roles', github: 'solidusio-contrib/solidus_user_roles'
 ```
 
 Bundle your dependencies and run the installation generator:
