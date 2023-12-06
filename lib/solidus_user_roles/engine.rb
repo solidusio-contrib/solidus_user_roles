@@ -18,8 +18,8 @@ module SolidusUserRoles
     end
 
     def self.load_custom_permissions
-      # Ensure both tables exist before assigning permissions
-      if ActiveRecord::Base.connected? &&
+      # Ensure connection to DB is available and both tables exist before assigning permissions
+      if database_connection_available? &&
           (ActiveRecord::Base.connection.tables & ['spree_roles', 'spree_permission_sets']).to_a.length == 2
         ::Spree::Role.non_base_roles.each do |role|
           ::Spree::Config.roles.assign_permissions role.name, role.permission_sets_constantized
@@ -41,5 +41,13 @@ module SolidusUserRoles
     end
 
     config.to_prepare(&method(:activate).to_proc)
+
+    private
+
+    def self.database_connection_available?
+      ActiveRecord::Base.connection rescue false
+
+      ActiveRecord::Base.connected?
+    end
   end
 end
