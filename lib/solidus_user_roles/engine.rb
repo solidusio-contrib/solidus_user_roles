@@ -18,6 +18,9 @@ module SolidusUserRoles
     end
 
     def self.load_custom_permissions
+      # We do not need to load custom permissions when running the `asset:precompile` Rake task.
+      return if asset_precompilation_step?
+
       # Ensure connection to DB is available and both tables exist before assigning permissions
       if database_connection_available? &&
           (ActiveRecord::Base.connection.tables & ['spree_roles', 'spree_permission_sets']).to_a.length == 2
@@ -43,6 +46,10 @@ module SolidusUserRoles
     config.to_prepare(&method(:activate).to_proc)
 
     private
+
+    def self.asset_precompilation_step?
+      ARGV.include? "assets:precompile"
+    end
 
     def self.database_connection_available?
       ActiveRecord::Base.connection rescue false
