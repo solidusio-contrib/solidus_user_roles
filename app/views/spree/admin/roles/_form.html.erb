@@ -22,7 +22,7 @@
       </ul>
     </div>
     <div class="right col-6">
-      <%= f.label nil, I18n.t("spree.display_permissions") %>
+      <%= f.label nil, I18n.t("spree.management_permissions") %>
         <ul style="list-style-type: none; padding: 0; margin: 0;">
           <% Spree::PermissionSet.management_permissions.each do |permission| %>
             <li>
