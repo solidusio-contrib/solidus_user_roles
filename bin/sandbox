@@ -13,7 +13,7 @@ fi
 if [ -z "$SOLIDUS_BRANCH" ]
 then
   echo "~~> Use 'export SOLIDUS_BRANCH=[main|v4.0|...]' to control the Solidus branch"
-  SOLIDUS_BRANCH="main"
+  SOLIDUS_BRANCH="v4.3"
 fi
 echo "~~> Using branch $SOLIDUS_BRANCH of solidus"
 
