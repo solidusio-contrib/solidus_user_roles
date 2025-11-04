@@ -1,0 +1,4 @@
+<!-- insert_bottom "[data-hook='admin_tabs']" -->
+<% if can? :admin, Spree::Role %>
+  <%= tab(:roles, icon: 'users') %>
+<% end %>
