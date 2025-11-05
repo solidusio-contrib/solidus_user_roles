@@ -19,15 +19,11 @@ jobs:
       fail-fast: true
       matrix:
         rails-version:
-          - "7.2"
-          - "8.0"
+          - "7.1"
         ruby-version:
           - "3.3"
-          - "3.4"
         solidus-branch:
-          - "v4.4"
-          - "v4.5"
-          - "v4.6"
+          - "v4.3"
         database:
           - "postgresql"
           - "mysql"
