@@ -3,6 +3,7 @@
 > [!NOTE]
 > DEPRECATED: This extension is deprecated. As of Solidus 4.4 the user-roles behaviour has been added to Solidus core. If you're using Solidus 4.4 or later prefer the core behaviour and remove this gem.
 
+[![Test](https://github.com/solidusio-contrib/solidus_user_roles/actions/workflows/test.yml/badge.svg)](https://github.com/solidusio-contrib/solidus_user_roles/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/solidusio-contrib/solidus_user_roles/branch/master/graph/badge.svg)](https://codecov.io/gh/solidusio-contrib/solidus_user_roles)
 
 <!-- Explain what your extension does. -->
