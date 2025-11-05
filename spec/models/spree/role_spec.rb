@@ -22,6 +22,13 @@ describe Spree::Role, type: :model do
 
       expect { role.save }.to change { Spree::Config.roles.roles[role.name].permission_sets.count }.from(1).to(2)
     end
+
+    it "removes existing permission sets" do
+      role.save
+      role.permission_sets = []
+
+      expect { role.save }.to change { Spree::Config.roles.roles[role.name].permission_sets.count }.from(1).to(0)
+    end
   end
 
   describe "#destroy" do
