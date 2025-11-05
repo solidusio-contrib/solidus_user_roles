@@ -7,7 +7,7 @@ module SolidusUserRoles
         base.has_many :role_permissions, dependent: :destroy
         base.has_many :permission_sets, through: :role_permissions
 
-        base.scope :non_base_roles, -> { where.not(name: ['admin', 'user']) }
+        base.scope :non_base_roles, -> { where.not(name: ["admin", "user"]) }
         base.validates_uniqueness_of :name, case_sensitive: false
         base.after_save :assign_permissions
       end

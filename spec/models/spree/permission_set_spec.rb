@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Spree::PermissionSet, type: :model do
   it { is_expected.to have_many :role_permissions }

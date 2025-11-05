@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Spree::Admin::RolesController do
   stub_authorization!
@@ -18,7 +18,7 @@ describe Spree::Admin::RolesController do
   end
 
   describe "#edit" do
-    subject { get :edit, params: { id: role.id } }
+    subject { get :edit, params: {id: role.id} }
 
     it { is_expected.to be_successful }
   end
@@ -42,11 +42,11 @@ describe Spree::Admin::RolesController do
     end
 
     it "updates the permission sets" do
-      expect{ request }.to change(Spree::Role, :count).by(1)
+      expect { request }.to change(Spree::Role, :count).by(1)
     end
 
     it "updates the RoleConfiguration" do
-      expect{ request }.to change { Spree::Config.roles.roles.count }.by(1)
+      expect { request }.to change { Spree::Config.roles.roles.count }.by(1)
     end
   end
 
@@ -70,12 +70,12 @@ describe Spree::Admin::RolesController do
     end
 
     it "updates the permission sets" do
-      expect{ request }.to change { role.reload.permission_sets.count }.by(1)
+      expect { request }.to change { role.reload.permission_sets.count }.by(1)
     end
   end
 
   describe "#destroy" do
-    subject { put :destroy, params: { id: role.to_param } }
+    subject { put :destroy, params: {id: role.to_param} }
 
     it { is_expected.to have_http_status(:found) }
   end
