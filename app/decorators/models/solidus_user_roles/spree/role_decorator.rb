@@ -3,13 +3,15 @@
 module SolidusUserRoles
   module Spree
     module RoleDecorator
+      BASE_ROLES = ["admin", "user"]
+
       def self.prepended(base)
         base.has_many :role_permissions, dependent: :destroy
         base.has_many :permission_sets, through: :role_permissions
 
-        base.scope :non_base_roles, -> { where.not(name: ["admin", "user"]) }
+        base.scope :non_base_roles, -> { where.not(name: BASE_ROLES) }
         base.validates_uniqueness_of :name, case_sensitive: false
-        base.after_save :assign_permissions
+        base.after_save :assign_permissions, if: -> { BASE_ROLES.none?(name) }
       end
 
       def permission_sets_constantized
