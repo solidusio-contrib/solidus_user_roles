@@ -5,7 +5,7 @@ module Spree
     has_many :role_permissions # rubocop:disable Rails/HasManyOrHasOneDependent
     has_many :roles, through: :role_permissions
     validates :name, :set, presence: true
-    scope :display_permissions, -> { where('name LIKE ?', '%Display') }
-    scope :management_permissions, -> { where('name LIKE ?', '%Management') }
+    scope :display_permissions, -> { where("name LIKE ?", "%Display") }
+    scope :management_permissions, -> { where("name LIKE ?", "%Management") }
   end
 end

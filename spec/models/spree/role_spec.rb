@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Spree::Role, type: :model do
   let(:role) {
@@ -12,13 +12,13 @@ describe Spree::Role, type: :model do
   it { is_expected.to validate_uniqueness_of(:name).ignoring_case_sensitivity }
 
   describe "#assign_permissions" do
-    it 'creates new Spree::RoleConfiguration::Role' do
+    it "creates new Spree::RoleConfiguration::Role" do
       expect { role.save }.to change { Spree::Config.roles.roles.count }.by(1)
     end
 
-    it 'updates the existing Spree::RoleConfiguration::Role' do
+    it "updates the existing Spree::RoleConfiguration::Role" do
       role.save
-      role.permission_sets << create(:permission_set, name: 'test', set: 'Spree::PermissionSets::ProductDisplay')
+      role.permission_sets << create(:permission_set, name: "test", set: "Spree::PermissionSets::ProductDisplay")
 
       expect { role.save }.to change { Spree::Config.roles.roles[role.name].permission_sets.count }.from(1).to(2)
     end
@@ -37,8 +37,8 @@ describe Spree::Role, type: :model do
 
       role.destroy
       aggregate_failures do
-        expect{ described_class.find(role.id) }.to raise_error(ActiveRecord::RecordNotFound)
-        expect{ Spree::RolePermission.find(role_permission.id) }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { described_class.find(role.id) }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { Spree::RolePermission.find(role_permission.id) }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

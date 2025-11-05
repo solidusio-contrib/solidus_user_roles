@@ -20,7 +20,7 @@ module Spree
 
         # due to how cancancan filters by associations,
         # we have to define this twice, once for `accessible_by`
-        can :update_email, Spree.user_class, spree_roles: { id: nil }
+        can :update_email, Spree.user_class, spree_roles: {id: nil}
         # and once for `can?`
         can :update_email, Spree.user_class do |user|
           user.spree_roles.none?
