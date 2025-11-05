@@ -17,7 +17,7 @@ module SolidusUserRoles
       end
 
       def assign_permissions
-        ::Spree::Config.roles.assign_permissions name, permission_sets_constantized
+        ::Spree::Config.roles.roles[name] = ::Spree::RoleConfiguration::Role.new(name, permission_sets_constantized)
       end
 
       ::Spree::Role.prepend self
