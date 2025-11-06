@@ -2,7 +2,7 @@
 
 module SolidusUserRoles
   module Spree
-    module RoleDecorator
+    module RolePatch
       BASE_ROLES = ["admin", "user"]
 
       def self.prepended(base)
