@@ -29,6 +29,15 @@ describe Spree::Role, type: :model do
 
       expect { role.save }.to change { Spree::Config.roles.roles[role.name].permission_sets.count }.from(1).to(0)
     end
+
+    it "should not update base roles" do
+      role.name = "admin"
+      role.save
+
+      role.permission_sets = []
+
+      expect { role.save }.to_not change { Spree::Config.roles.roles[role.name].permission_sets.count }
+    end
   end
 
   describe "#destroy" do
